@@ -23,10 +23,14 @@ kafka-go-python-demo/
 3. Go result consumer → Redis/cache
 4. Client → `GET /result/{job_id}` (gateway) → `200` or pending
 
-## Run entrypoints (scaffold)
+## Run entrypoints
 
 ```bash
+# Terminal 1 — processes raw-prompts -> finished-prompts
+pip install -r services/ai-worker/requirements.txt
+python services/ai-worker/main.py
+
+# Terminal 2 — scaffold only for now
 go run ./services/gateway/cmd
 go run ./services/result-consumer/cmd
-python services/ai-worker/main.py
 ```
